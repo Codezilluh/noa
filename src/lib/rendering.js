@@ -163,8 +163,8 @@ function initScene(self, canvas, opts) {
     ));
 
     shadowGenerator.useBlurCloseExponentialShadowMap = true;
-    shadowGenerator.blurKernel = 6;
-    shadowGenerator.useKernelBlur = true;
+    // shadowGenerator.blurKernel = 6;
+    // shadowGenerator.useKernelBlur = true;
     shadowGenerator.frustumEdgeFalloff = 0.5;
 
     // make a default flat material (used or clone by terrain, etc)
