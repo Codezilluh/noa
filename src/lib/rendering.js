@@ -162,12 +162,11 @@ function initScene(self, canvas, opts) {
         self.sun
     ));
 
-    shadowGenerator.useBlurCloseExponentialShadowMap = true;
-    shadowGenerator.blurKernel = 6;
-    shadowGenerator.useKernelBlur = true;
+    // shadowGenerator.useBlurCloseExponentialShadowMap = true;
+    // shadowGenerator.blurKernel = 6;
+    // shadowGenerator.useKernelBlur = true;
     shadowGenerator.frustumEdgeFalloff = 0.25;
-    shadowGenerator.getShadowMap().refreshRate =
-        RenderTargetTexture.REFRESHRATE_RENDER_ONEVERYTWOFRAMES;
+    shadowGenerator.usePercentageCloserFiltering = true;
 
     // make a default flat material (used or clone by terrain, etc)
     self.flatMaterial = self.makeStandardMaterial("flatmat");
