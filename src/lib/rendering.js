@@ -272,11 +272,6 @@ Rendering.prototype.addMeshToScene = function (
     if (this.shadowGenerator) {
         mesh.receiveShadows = true;
         this.shadowGenerator.addShadowCaster(mesh);
-
-        if (isStatic) {
-            this.shadowGenerator.getShadowMap().refreshRate =
-                RenderTargetTexture.REFRESHRATE_RENDER_ONCE;
-        }
     }
 
     // add to the octree, and add dispose handler to remove it
@@ -329,6 +324,11 @@ Rendering.prototype.disposeChunkForRendering = function (chunk) {
 /** @internal */
 Rendering.prototype._rebaseOrigin = function (delta) {
     var dvec = new Vector3(delta[0], delta[1], delta[2]);
+
+    if (this.shadowGenerator) {
+        this.shadowGenerator.getShadowMap().refreshRate =
+            RenderTargetTexture.REFRESHRATE_RENDER_ONCE;
+    }
 
     this._scene.meshes.forEach((mesh) => {
         // parented meshes don't live in the world coord system
