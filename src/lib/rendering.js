@@ -160,12 +160,10 @@ function initScene(self, canvas, opts) {
     let shadowGenerator =
         (window.shadowGenerator =
         self.shadowGenerator =
-            new ShadowGenerator(2048, self.sun));
+            new ShadowGenerator(4096, self.sun));
 
-    shadowGenerator.useBlurCloseExponentialShadowMap = true;
     shadowGenerator.bias = 0.001;
-    // shadowGenerator.blurKernel = 6;
-    // shadowGenerator.useKernelBlur = true;
+    shadowGenerator.normalBias = 0.0001;
     shadowGenerator.frustumEdgeFalloff = 0.5;
 
     // make a default flat material (used or clone by terrain, etc)
