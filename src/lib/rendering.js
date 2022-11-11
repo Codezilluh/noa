@@ -163,7 +163,7 @@ function initScene(self, canvas, opts) {
     ));
 
     shadowGenerator.useBlurCloseExponentialShadowMap = true;
-    shadowGenerator.blurKernel = 2;
+    shadowGenerator.blurKernel = 6;
     shadowGenerator.useKernelBlur = true;
     shadowGenerator.frustumEdgeFalloff = 0.25;
 
@@ -287,8 +287,8 @@ Rendering.prototype.addMeshToScene = function (
  */
 Rendering.prototype.makeStandardMaterial = function (name) {
     var mat = new StandardMaterial(name, this._scene);
-    //mat.specularColor.copyFromFloats(0, 0, 0);
-    //mat.ambientColor.copyFromFloats(1, 1, 1);
+    mat.specularColor.copyFromFloats(0.12, 0.12, 0.12);
+    mat.ambientColor.copyFromFloats(0.5, 0.5, 0.5);
     //mat.diffuseColor.copyFromFloats(1, 1, 1);
     this.postMaterialCreationHook(mat);
     return mat;
