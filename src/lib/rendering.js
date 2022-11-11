@@ -166,6 +166,8 @@ function initScene(self, canvas, opts) {
     shadowGenerator.blurKernel = 6;
     shadowGenerator.useKernelBlur = true;
     shadowGenerator.frustumEdgeFalloff = 0.25;
+    shadowGenerator.getShadowMap().refreshRate =
+        RenderTargetTexture.REFRESHRATE_RENDER_ONCE;
 
     // make a default flat material (used or clone by terrain, etc)
     self.flatMaterial = self.makeStandardMaterial("flatmat");
@@ -533,7 +535,11 @@ Rendering.prototype.debug_MeshCount = function () {
 };
 
 import { makeProfileHook } from "./util";
-import { DirectionalLight, ShadowGenerator } from "@babylonjs/core";
+import {
+    DirectionalLight,
+    RenderTargetTexture,
+    ShadowGenerator,
+} from "@babylonjs/core";
 var profile_hook = PROFILE
     ? makeProfileHook(200, "render internals")
     : () => {};
