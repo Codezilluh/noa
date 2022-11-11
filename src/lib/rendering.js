@@ -166,8 +166,6 @@ function initScene(self, canvas, opts) {
     shadowGenerator.blurKernel = 6;
     shadowGenerator.useKernelBlur = true;
     shadowGenerator.frustumEdgeFalloff = 0.25;
-    shadowGenerator.getShadowMap().refreshRate =
-        RenderTargetTexture.REFRESHRATE_RENDER_ONCE;
 
     // make a default flat material (used or clone by terrain, etc)
     self.flatMaterial = self.makeStandardMaterial("flatmat");
@@ -274,6 +272,11 @@ Rendering.prototype.addMeshToScene = function (
     if (this.shadowGenerator) {
         mesh.receiveShadows = true;
         this.shadowGenerator.addShadowCaster(mesh);
+
+        if (isStatic) {
+            this.shadowGenerator.getShadowMap().refreshRate =
+                RenderTargetTexture.REFRESHRATE_RENDER_ONCE;
+        }
     }
 
     // add to the octree, and add dispose handler to remove it
