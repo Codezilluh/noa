@@ -351,7 +351,9 @@ function updateCameraForRender(self) {
     self._cameraHolder.rotation.y = cam.heading;
     self._camera.position.z = -cam.currentZoom;
 
-    self.sun.position = self._cameraHolder.position;
+    if (self.sun) {
+        self.sun.position = self._cameraHolder.position;
+    }
 
     // applies screen effect when camera is inside a transparent voxel
     var cloc = cam._localGetPosition();
