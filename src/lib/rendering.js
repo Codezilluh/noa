@@ -157,10 +157,10 @@ function initScene(self, canvas, opts) {
     sun.shadowFrustumSize = 64;
     sun.position = Vector3.Zero();
 
-    let shadowGenerator = (self.shadowGenerator = new ShadowGenerator(
-        2048,
-        self.sun
-    ));
+    let shadowGenerator =
+        (window.shadowGenerator =
+        self.shadowGenerator =
+            new ShadowGenerator(2048, self.sun));
 
     shadowGenerator.useBlurCloseExponentialShadowMap = true;
     shadowGenerator.bias = 0.001;
