@@ -154,7 +154,7 @@ function initScene(self, canvas, opts) {
     sun.autoUpdateExtends = false;
     sun.shadowMinZ = -32;
     sun.shadowMaxZ = 64;
-    sun.shadowFrustumSize = 32;
+    sun.shadowFrustumSize = 64;
     sun.position = Vector3.Zero();
 
     let shadowGenerator = (self.shadowGenerator = new ShadowGenerator(
