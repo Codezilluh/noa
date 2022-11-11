@@ -166,6 +166,8 @@ function initScene(self, canvas, opts) {
     shadowGenerator.blurKernel = 6;
     shadowGenerator.useKernelBlur = true;
     shadowGenerator.frustumEdgeFalloff = 0.25;
+    shadowGenerator.getShadowMap().refreshRate =
+        RenderTargetTexture.REFRESHRATE_RENDER_ONEVERYTWOFRAMES;
 
     // make a default flat material (used or clone by terrain, etc)
     self.flatMaterial = self.makeStandardMaterial("flatmat");
@@ -324,11 +326,6 @@ Rendering.prototype.disposeChunkForRendering = function (chunk) {
 /** @internal */
 Rendering.prototype._rebaseOrigin = function (delta) {
     var dvec = new Vector3(delta[0], delta[1], delta[2]);
-
-    if (this.shadowGenerator) {
-        this.shadowGenerator.getShadowMap().refreshRate =
-            RenderTargetTexture.REFRESHRATE_RENDER_ONCE;
-    }
 
     this._scene.meshes.forEach((mesh) => {
         // parented meshes don't live in the world coord system
