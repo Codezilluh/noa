@@ -36,6 +36,7 @@ var defaults = {
     octreeBlockSize: 2,
     renderOnResize: true,
     sunVec: new Vector3(0.3, -1, 1),
+    shadowRes: 2048,
 };
 
 /**
@@ -59,7 +60,8 @@ var defaults = {
  *     preserveDrawingBuffer: true,
  *     octreeBlockSize: 2,
  *     renderOnResize: true,
- *     sunVec: Vector3 {0.3, -1, 1}
+ *     sunVec: Vector3 {0.3, -1, 1},
+ * 	   shadowRes: 2048
  * }
  * ```
  */
@@ -160,7 +162,7 @@ function initScene(self, canvas, opts) {
     let shadowGenerator =
         (window.shadowGenerator =
         self.shadowGenerator =
-            new ShadowGenerator(4096, self.sun));
+            new ShadowGenerator(opts.shadowRes, self.sun));
 
     shadowGenerator.bias = 0.001;
     shadowGenerator.normalBias = 0.0001;
