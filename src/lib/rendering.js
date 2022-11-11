@@ -163,6 +163,7 @@ function initScene(self, canvas, opts) {
     ));
 
     shadowGenerator.useBlurCloseExponentialShadowMap = true;
+    shadowGenerator.bias = 0.001;
     // shadowGenerator.blurKernel = 6;
     // shadowGenerator.useKernelBlur = true;
     shadowGenerator.frustumEdgeFalloff = 0.5;
