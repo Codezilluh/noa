@@ -147,6 +147,7 @@ function initScene(self, canvas, opts) {
     self._light.diffuse = arrToColor(opts.lightDiffuse);
     self._light.specular = arrToColor(opts.lightSpecular);
     self._light.groundColor = arrToColor(opts.groundLightColor);
+    self._light.setEnabled(false);
 
     let sun = (self.sun = new DirectionalLight("sun", self.sunVec, scene));
 
@@ -331,10 +332,10 @@ Rendering.prototype._rebaseOrigin = function (delta) {
         // move each mesh by delta (even though most are managed by components)
         mesh.position.subtractInPlace(dvec);
 
-        if (this.shadowGenerator) {
-            mesh.receiveShadows = true;
-            this.shadowGenerator.addShadowCaster(mesh);
-        }
+        // if (this.shadowGenerator) {
+        //     mesh.receiveShadows = true;
+        //     this.shadowGenerator.addShadowCaster(mesh);
+        // }
 
         if (mesh._isWorldMatrixFrozen) {
             // paradoxically this unfreezes, then re-freezes the matrix
