@@ -331,6 +331,11 @@ Rendering.prototype._rebaseOrigin = function (delta) {
         // move each mesh by delta (even though most are managed by components)
         mesh.position.subtractInPlace(dvec);
 
+        if (this.shadowGenerator) {
+            mesh.receiveShadows = true;
+            this.shadowGenerator.addShadowCaster(mesh);
+        }
+
         if (mesh._isWorldMatrixFrozen) {
             // paradoxically this unfreezes, then re-freezes the matrix
             mesh.freezeWorldMatrix();
